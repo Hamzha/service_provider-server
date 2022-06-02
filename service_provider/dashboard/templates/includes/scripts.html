@@ -1,0 +1,30 @@
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/js/sb-admin.min.js"></script>
+<script src="/static/assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="/static/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="/static/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<script src="/static/js/demo/datatables-demo.js"></script>
+
+<script>
+  $(".alert-success")
+    .fadeTo(2000, 500)
+    .slideUp(500, function () {
+      $(".alert-success").slideUp(500);
+    });
+  $(".alert-error")
+    .fadeTo(2000, 500)
+    .slideUp(500, function () {
+      $(".alert-error").slideUp(500);
+    });
+  $(document).ready(function () {
+    $("#myTable").DataTable();
+  });
+  $(document).ready(function () {
+    $("#id_start_datetime").datetimepicker();
+  });
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

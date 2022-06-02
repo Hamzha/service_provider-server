@@ -1,0 +1,149 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Edit Configuration {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"> Edit Configuration</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/config/"> Configurations</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Edit Configurations</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Update Configurations Details</h3>
+          </div>
+          <!-- Light table -->
+          <div class="text-center text-muted mb-4">
+
+              {% if msg %}
+              <h3>{{ msg | safe }}</h3>
+              {% else %}
+              <h3>Update Configuration</h3>
+              {% endif %}
+
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal"action="/dashboard/config/update/{{ config.id }}/" method="POST"  >
+              {% csrf_token %}
+              <div class="card-body">
+                  <div class="form-group row">
+                      <label for="{{ config.id }}" class="col-lg-3 col-form-label">Config ID: </label>
+                      <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ config.id }}" placeholder="Enter Config ID" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.lead_charge }}" class="col-lg-3 col-form-label"> Lead Charge: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.lead_charge }}" placeholder="Enter Config Lead Charge" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.urgent_service_charges }}" class="col-lg-3 col-form-label"> Urgent Service Charges: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.urgent_service_charges }}" placeholder="Enter Config Urgent Service Charges" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.regular_service_charges }}" class="col-lg-3 col-form-label"> Regular Service Charges: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.regular_service_charges }}" placeholder="Enter Config Regular Service Charges" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.job_cancellation_charges }}" class="col-lg-3 col-form-label"> Job Cancellation Charges: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.job_cancellation_charges }}" placeholder="Enter Config Job Cancellation Charges" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.otp_expiry }}" class="col-lg-3 col-form-label"> Otp Expiry: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.otp_expiry }}" placeholder="Enter Config Otp Expiry" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.vendor_per_search }}" class="col-lg-3 col-form-label"> Vendor Per Search: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.vendor_per_search }}" placeholder="Enter Config Vendor Per Search" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.first_late_penality_charge }}" class="col-lg-3 col-form-label"> First Late Penality Charge: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.first_late_penality_charge }}" placeholder="Enter First Late Penality Charge" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.first_late_penality_timestamp }}" class="col-lg-3 col-form-label"> First Late Penality Time stamp: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.first_late_penality_timestamp }}" placeholder="Enter First Late Penality Time stamp" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.second_late_penality_charge }}" class="col-lg-3 col-form-label"> Second Late Penality Charge: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.second_late_penality_charge }}" placeholder="Enter Second Late Penality Charge" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.second_late_penality_timestamp }}" class="col-lg-3 col-form-label"> Second Late Penality Timestamp: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.second_late_penality_timestamp }}" placeholder="Enter Second Late Penality Timestamp" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.third_late_penality_charge }}" class="col-lg-3 col-form-label"> Third Late Penality Charge: </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.third_late_penality_charge }}" placeholder="Enter Third Late Penality Charge" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="{{ config.third_late_penality_timestamp }}" class="col-lg-3 col-form-label"> Third Late Penality Timestamp </label>
+                      <div class="col-lg-7">
+                        <input type="text" class="form-control" value="{{ config.third_late_penality_timestamp }}" placeholder="Enter Third Late Penality Timestamp" />
+                      </div>
+                  </div>
+            <a class="btn btn-warning  col-md-2" href="/dashboard/config/" type="button">Back To Listing&nbsp;&nbsp;&nbsp;<span></span></a>
+            <button class="btn btn-primary col-md-2" type="submit">Update Configuration &nbsp;&nbsp;&nbsp;<span></span></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script>
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+</script>
+{% endblock javascripts %}

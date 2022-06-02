@@ -1,0 +1,183 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Edit User {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"> Edit User</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/user/> Users History</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Edit User</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Update {{user.first_name}}{{user.last_name}} Details</h3>
+          </div>
+          <!-- Light table -->
+          <div class="text-center text-muted mb-4">
+
+              {% if msg %}
+              <h3>{{ msg | safe }}</h3>
+              {% else %}
+              <h3>Update User</h3>
+              {% endif %}
+
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal"action="/dashboard/user/update/{{ user.id }}/" method="POST"  >
+              {% csrf_token %}
+              <div class="card-body">
+                <div class="form-group row">
+                    <label for="{{ user.email }}" class="col-lg-3 col-form-label">Email: </label>
+                    <div class="col-lg-7">
+                    <input type="email" class="form-control" name="email" value="{{ user.email }}" placeholder="Enter Email:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.first_name }}" class="col-lg-3 col-form-label">First Name: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" placeholder="Enter First Name:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.last_name }}" class="col-lg-3 col-form-label">Last Name: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="last_name" value="{{ user.last_name }}" placeholder="Enter Last Name:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.date_of_birth }}" class="col-lg-3 col-form-label">Date of Birth: </label>
+                    <div class="col-lg-7">
+                      <input type="datetime-local" class="form-control" name="date_of_birth" value="{{ user.date_of_birth }}" placeholder="Enter DOB:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.type }}" class="col-lg-3 col-form-label">User Type: </label>
+                    <div class="col-lg-7">
+                      <select name="type" class="form-control"> 
+                        <option value="0" {% if user.type == 0 %} selected="selected" {% endif %}>None</option>
+                        <option value="1"{% if user.type == 1 %} selected="selected" {% endif %}>Vendor</option> 
+                        <option value="2"{% if user.type == 2 %} selected="selected" {% endif %}>Client</option> 
+                        <option value="3"{% if user.type == 3 %} selected="selected" {% endif %}>Admin</option> 
+                      </select>
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.status }}" class="col-lg-3 col-form-label">User Status: </label>
+                    <div class="col-lg-7">
+                      <select name="status" class="form-control"> 
+                        <option value="0" {% if user.status == 0 %} selected="selected" {% endif %}>None</option>
+                        <option value="1"{% if user.status == 1 %} selected="selected" {% endif %}>Inactive</option> 
+                        <option value="2"{% if user.status == 2 %} selected="selected" {% endif %}>Active</option> 
+                        <option value="3"{% if user.status == 3 %} selected="selected" {% endif %}>Pending</option> 
+                      </select>
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.phone_numer }}" class="col-lg-3 col-form-label">Phone Number:  </label>
+                    <div class="col-lg-7">
+                      <input type="tel" class="form-control" id="phone" name="phone_number" value="{{ user.phone_numer }}" placeholder="Enter Phone Number:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.gender }}" class="col-lg-3 col-form-label">Gender:  </label>
+                    <div class="col-lg-7" >
+                    <select name="gender"  class="form-control" id="gender">
+                      <option value="0" {% if user.gender == 0 %} selected="selected" {% endif %}>Gender</option>
+                      <option value="1" {% if user.gender == 1 %} selected="selected" {% endif %}>Male</option>
+                      <option value="2" {% if user.gender == 2 %} selected="selected" {% endif %}>Female</option>
+                      <option value="3" {% if user.gender == 3 %} selected="selected" {% endif %}>other</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.home_address }}" class="col-lg-3 col-form-label">Home Address:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="home_address" value="{{ user.home_address }}" placeholder="Enter Home Address:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.street_address }}" class="col-lg-3 col-form-label">Street Address:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="street_address" value="{{ user.street_address }}" placeholder="Enter Street Address:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.apartment }}" class="col-lg-3 col-form-label">Apartment:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="apartment" value="{{ user.apartment }}" placeholder="Enter Apartment:" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.zipcode }}" class="col-lg-3 col-form-label">Zip Code: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" name="zipcode" value="{{ user.zipcode }}" placeholder="Enter Zip Code:" />
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                  <label for="{{ user.country }}" class="col-lg-3 col-form-label">Country: </label>
+                  <div class="col-lg-7" >
+                  <select name="country" value="{{ user.country }}" class="countries  form-control" id="countryId">
+                    <option value="{{ user.country }}" selected>Select Country</option>
+                  </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.state }}" class="col-lg-3 col-form-label">State: </label>
+                    <div class="col-lg-7" >
+                    <select name="state" class="states form-control" id="stateId">
+                      <option value="{{ user.state }}" selected>Select State</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.city }}" class="col-lg-3 col-form-label">City: </label>
+                    <div class="col-lg-7" >
+                      <select name="city" class="cities form-control" id="cityId">
+                        <option value="{{ user.city }}" selected>Select City</option>
+                      </select>
+                    </div>
+                </div> -->
+            </div>
+            <a class="btn btn-warning  col-md-2" href="/dashboard/user/" type="button">Back To Listing&nbsp;&nbsp;&nbsp;<span></span></a>
+            <button class="btn btn-primary col-md-2" type="submit">Update User &nbsp;&nbsp;&nbsp;<span></span></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script>
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+</script>
+{% endblock javascripts %}

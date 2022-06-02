@@ -1,0 +1,90 @@
+{% extends 'layouts/base.html' %} {% block title %} Users Transactions
+{%endblock title %} {% block content %}
+
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Transactions</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="/dashboard"><i class="fas fa-home"></i></a>
+              </li>
+              <!-- <li class="breadcrumb-item"><a href="#"> Transaction History</a></li> -->
+              <li class="breadcrumb-item ">
+                <a href="/dashboard/user/view/{{ id }}" >User Detail</a>
+                
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                User Accounts
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <!-- <div class="col-lg-6 col-5 text-right">
+            <a href="create/" class="btn btn-sm btn-neutral">New</a>
+            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+          <h3 class="mb-0">Accounts listing</h3>
+        </div>
+        <!-- Light table -->
+        <div class="card-body">
+          <!-- {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %} -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush" id="myTable">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="Id">Id</th>
+                  <th scope="col" class="sort" data-sort="Card Number">Card Number</th>
+                  <th scope="col" class="sort" data-sort="CVV">CVV</th>
+                  <th scope="col" class="sort" data-sort="User ID">User ID</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                {% for account in accountsData %}
+                <h1>{{user}}</h1>
+                <tr>
+                  <td>{{ account.id }}</td>
+                      <td>{{ account.card_number  }}</td>
+                      <td>{{ account.cvv  }}</td>
+                      <td>{{ account.user_id  }}</td>
+                  <td>
+                    <a class="btn btn-sm btn-info" href="/dashboard/user/view/account/{{ account.id }}/"> <span class="fa fa-edit"></span> View</a>
+                    <!-- <a class="btn btn-sm btn-warning" href="/dashboard/user/edit/{{ user.id }}/"> <span class="fa fa-edit"></span> Edit</a>
+                    <a class="btn btn-sm btn-danger" href="/dashboard/user/delete/{{ user.id }}/"><span class="fa fa-trash"></span> Delete</a> -->
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "includes/footer.html" %}
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

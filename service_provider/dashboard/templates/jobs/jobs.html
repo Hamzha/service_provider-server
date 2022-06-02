@@ -1,0 +1,88 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Jobs History {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"> Jobs</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Jobs Listing</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <!-- <a href="create/" class="btn btn-sm btn-neutral">New</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Jobs</h3>
+          </div>
+          <!-- Light table -->
+          <div class="card-body">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush"  id="dataTable">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" class="sort" data-sort="id">Job ID</th>
+                    <th scope="col" class="sort" data-sort="id">Vendor Name</th>
+                    <th scope="col" class="sort" data-sort="id">Client Name</th>
+                    <th scope="col" class="sort" data-sort="budget">Job State</th>
+                    <th scope="col" class="sort" data-sort="parent_id">Job Start Date Time</th>
+                    <th scope="col" class="sort" data-sort="name">Job End Date Time</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  {% for user in jobsData %}
+                  <tr>
+                      <td>{{ user.index.id}}</td>
+                      <td>{{ user.index.lead_job.vendor.first_name}} {{ user.index.lead_job.vendor.last_name}}</td>
+                      <td>{{ user.index.lead_job.client.first_name}} {{ user.index.lead_job.client.last_name}}</td>
+                      <td>{{ user.action  }}</td>
+                      <td>{{ user.index.start_datetime }}</td>
+                      <td>{{ user.index.end_datetime  }}</td>
+                      <!-- <td>{{ user.created_at  | date:"d-m-Y H:i:s" }}</td> -->
+                      <td>
+                          <a class="btn btn-sm btn-info" href="/dashboard/jobs/view/{{ user.index.id }}/"> <span class="fa fa-edit"></span> View</a>
+                          <!-- <a class="btn btn-sm btn-warning" href="/dashboard/jobs/edit/{{ user.id }}/"> <span class="fa fa-edit"></span> Edit</a> -->
+                          <a class="btn btn-sm btn-danger" href="/dashboard/jobs/delete/{{ user.index.id }}/"><span class="fa fa-trash"></span> Delete</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

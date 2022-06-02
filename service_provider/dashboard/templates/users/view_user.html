@@ -1,0 +1,150 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Edit User {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"> View User</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/user"> Users Listing</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> View User</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href="/dashboard/user/view/transactions/{{ user.id }}/" class="btn btn-sm btn-neutral">View Transactions</a>
+            <a href="/dashboard/user/view/accounts/{{ user.id }}/" class="btn btn-sm btn-neutral">View Accounts</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+            <div class="card-header border-0">
+                <h3 class="mb-0">{{user.first_name}} {{user.last_name}} Details</h3>
+            </div>
+          <!-- Light table -->
+            <div class="card-body">
+              <form>
+                <div class="form-group row">
+                    <label for="{{ user.email }}" class="col-lg-3 col-form-label">Email: </label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control" value="{{ user.email }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.first_name }}" class="col-lg-3 col-form-label">First Name: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.first_name }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.last_name }}" class="col-lg-3 col-form-label">Last Name: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.last_name }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="{{ user.date_of_birth }}" class="col-lg-3 col-form-label">Date of Birth: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.date_of_birth }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.type }}" class="col-lg-3 col-form-label">User Type: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.type }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.status }}" class="col-lg-3 col-form-label">User Status: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.status }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.phone_number }}" class="col-lg-3 col-form-label">Phone Number:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.phone_number }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.gender }}" class="col-lg-3 col-form-label">Gender:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.gender }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.home_address }}" class="col-lg-3 col-form-label">Home Address:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.home_address }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.street_address }}" class="col-lg-3 col-form-label">Street Address:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.street_address }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.apartment }}" class="col-lg-3 col-form-label">Apartment:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.apartment }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.city }}" class="col-lg-3 col-form-label">City: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.city }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.state }}" class="col-lg-3 col-form-label">State: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.state }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.zipcode }}" class="col-lg-3 col-form-label">Zip Code: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.zipcode }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ user.country }}" class="col-lg-3 col-form-label">Country: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ user.country }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <a class="btn btn-primary  col-md-2" href="/dashboard/user/" type="button">Back To User Listing&nbsp;&nbsp;&nbsp;<span></span></a>
+              </form>
+            </div>
+
+        </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

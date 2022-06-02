@@ -1,0 +1,114 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Edit User {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"> View User</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/user"> Transaction Listing</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> View Transaction</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <!-- <a href="/dashboard/user/view/transactions/{{ accountData.id }}/" class="btn btn-sm btn-neutral">View Transactions</a>
+            <a href="/dashboard/user/view/accounts/{{ accountData.id }}/" class="btn btn-sm btn-neutral">View Accounts</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+            <div class="card-header border-0">
+                <h3 class="mb-0">Account {{accountData.id }} Details</h3>
+            </div>
+          <!-- Light table -->
+            <div class="card-body">
+              <form>
+                <div class="form-group row">
+                    <label for="{{ accountData.id }}" class="col-lg-3 col-form-label">ID: </label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control" value="{{ accountData.id }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.card_number }}" class="col-lg-3 col-form-label">Card Number: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.card_number }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.cvv }}" class="col-lg-3 col-form-label">CVV: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.cvv }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="{{ accountData.expire_month }}" class="col-lg-3 col-form-label">Expiry Month: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.expire_month }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.expire_year }}" class="col-lg-3 col-form-label">Expiry Year: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.expire_year }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.user_id }}" class="col-lg-3 col-form-label">User id: </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.user_id }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.created_at }}" class="col-lg-3 col-form-label">Created at:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.created_at }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.created_by }}" class="col-lg-3 col-form-label">Created by:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.created_by }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ accountData.updated_at }}" class="col-lg-3 col-form-label">Updated at:  </label>
+                    <div class="col-lg-7">
+                      <input type="text" class="form-control" value="{{ accountData.updated_at }}" placeholder="No Data Found" disabled/>
+                    </div>
+                </div>
+                <a class="btn btn-primary  col-md-2" href="/dashboard/user/" type="button">Back To User &nbsp;&nbsp;&nbsp;<span></span></a>
+              </form>
+            </div>
+
+        </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
